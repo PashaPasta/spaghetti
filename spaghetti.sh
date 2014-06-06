@@ -9,6 +9,16 @@ printf " Available options: -cidr <CIDR>
 -h Displays help text
 "
 fi
+if [[ $1 = --check-install ]] ; then
+dpkg --get-selections > /tmp/dpkglist.txt
+	if grep -q prips "/tmp/dpkglist.txt" ; then
+		printf "Dependencies appear to be installed correctly.\n"
+		exit 
+	else
+		sudo apt-get -qq install prips
+		printf "The dependent package prips was installed.\n"
+	fi
+fi
 if [[ $1 = -cidr ]] ; then
 prips $2 > /tmp/ips.txt
         now=$(date +"%m_%d_%Y_%H_%M")
