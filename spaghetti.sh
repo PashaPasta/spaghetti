@@ -4,10 +4,12 @@
 
 
 if [[ $1 = -h ]] ; then
-printf " Available options: -cidr <CIDR>
--list <path to list of ips, one IP per line>
---check-install Checks for dependencies and installs them if not installed
--h Displays help text
+printf " Available options: 
+
+	-cidr <CIDR>
+	-list <path to list of ips, one IP per line>
+	--check-install Checks for dependencies and installs them if not installed
+	-h Displays help text
 "
 fi
 if [[ $1 = --check-install ]] ; then
