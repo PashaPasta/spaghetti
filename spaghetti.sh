@@ -22,6 +22,12 @@ dpkg --get-selections > /tmp/dpkglist.txt
 		sudo apt-get install prips > /dev/null
 		printf "The dependent package prips was installed.\n"
 	fi
+	if grep -q whois "/tmp/dpkglist.txt" ; then
+                printf "Dependent package whois appears to be installed correctly.\n"
+        else
+                sudo apt-get install whois > /dev/null
+                printf "The dependent package whois was installed.\n"
+        fi
 fi
 if [[ $1 = -cidr ]] ; then
 prips $2 > /tmp/ips.txt
@@ -35,3 +41,5 @@ now=$(date +"%m_%d_%Y_%H_%M")
         xargs -0 -n 1 whois < <(tr \\n \\0 < $2) | tee results_$now.txt
         printf "Check results_$now.txt for whois output.\n"
 fi
+rm /tmp/dpkglist.txt > /dev/null
+rm /tmp/ips.txt > /dev/null
