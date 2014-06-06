@@ -15,7 +15,7 @@ dpkg --get-selections > /tmp/dpkglist.txt
 		printf "Dependencies appear to be installed correctly.\n"
 		exit 
 	else
-		sudo apt-get -qq install prips
+		sudo apt-get install prips > /dev/null
 		printf "The dependent package prips was installed.\n"
 	fi
 fi
