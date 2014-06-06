@@ -4,7 +4,8 @@
 
 
 if [[ $1 = -h ]] ; then
-printf " Available options: 
+printf "spaghetti.sh: A mass whois tool 
+	Available options: 
 
 	-cidr <CIDR>
 	-list <path to list of ips, one IP per line>
